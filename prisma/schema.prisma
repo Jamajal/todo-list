@@ -1,0 +1,20 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+//admin é o usuário e senha que criei no docker
+datasource db {
+  provider = "postgresql"
+  url      = "postgresql://admin:admin@localhost:5432"
+}
+
+//comando apra criar migration: npx prisma migrate dev <modelName>
+//banco deve estar rodando
+model Todo{
+  id Int @id @default(autoincrement())
+  status Boolean @default(false)
+  name String
+}
